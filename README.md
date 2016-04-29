@@ -1,3 +1,6 @@
+A simple REST app created using Spring and JAX-RS(Apache CXF). Supports JSON formats.
+Documentation is generated using Swagger. 
+
 Do
 
     mvn jetty:run
