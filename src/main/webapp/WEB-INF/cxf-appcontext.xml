@@ -8,12 +8,25 @@
                             http://cxf.apache.org/schemas/jaxrs.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
+
+    <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
+        <!-- customize some of the properties -->
+        <property name="basePath" value="/springcxf/api"/>
+        <property name="description" value="A simple Spring JAX-RS REST service with docs generated using Swagger"/>
+        <property name="version" value="V1.0.0"/>
+        <property name="title" value="The Simple API"/>
+        <property name="contact" value="http://sinujohn.wordpress.com"/>
+    </bean>
+
     <jaxrs:server address="/"
                   basePackages="me.sinu.api.resource">
         <jaxrs:providers>
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider"/>
             <!--<ref bean="jsonProvider"/>-->
         </jaxrs:providers>
+        <jaxrs:features>
+            <ref bean="swagger2Feature" />
+        </jaxrs:features>
     </jaxrs:server>
 
 </beans>
